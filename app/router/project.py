@@ -57,6 +57,8 @@ async def create_project(db: db_dependency, project_request: ProjectRequest):
 
      db.add(project_model)
      db.commit()
+     db.refresh(project_model)
+     return project_model
 
 
 @router.put('/update/{project_id}', status_code=status.HTTP_200_OK)
@@ -83,6 +85,6 @@ async def delete_project(db: db_dependency, project_id: int = Path(gt=0)):
      project_model = db.query(Project).filter(Project.id == project_id).first()
      if project_model is None:
           raise HTTPException(status_code=404, detail='project not found')
-     db.query(Project).filter(Project.id == project_id).delete()
+     db.delete(project_model)
      db.commit()
 
