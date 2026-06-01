@@ -15,8 +15,8 @@ Before running the project, make sure the following are installed:
 ### 1. Clone the repository
 
 ```bash
-git clone <https://github.com/aliyazdanpanah-beep/task.git>
-cd <task>
+git clone https://github.com/aliyazdanpanah-beep/task.git
+cd task
 ```
 
 ### 2. Create and activate a virtual environment
