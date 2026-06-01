@@ -80,7 +80,7 @@ async def update_project(db: db_dependency,
      
 @router.delete('/delete/{project_id}', status_code=status.HTTP_204_NO_CONTENT)
 async def delete_project(db: db_dependency, project_id: int = Path(gt=0)):
-     project_model = db.query(Project).filter(Project.id == project_id).delete()
+     project_model = db.query(Project).filter(Project.id == project_id).first()
      if project_model is None:
           raise HTTPException(status_code=404, detail='project not found')
      db.query(Project).filter(Project.id == project_id).delete()
